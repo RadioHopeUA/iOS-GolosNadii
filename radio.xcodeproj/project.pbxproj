@@ -14,6 +14,15 @@
 		B37C39071BCD96DB00FFE25D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B37C39051BCD96DB00FFE25D /* LaunchScreen.storyboard */; };
 		B37C39121BCD96DC00FFE25D /* radioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C39111BCD96DC00FFE25D /* radioTests.swift */; };
 		B37C391D1BCD96DC00FFE25D /* radioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C391C1BCD96DC00FFE25D /* radioUITests.swift */; };
+		B37C392B1BCD9D2400FFE25D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C392A1BCD9D2400FFE25D /* Color.swift */; settings = {ASSET_TAGS = (); }; };
+		B37C392C1BCD9D2400FFE25D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C392A1BCD9D2400FFE25D /* Color.swift */; settings = {ASSET_TAGS = (); }; };
+		B37C392D1BCD9D2400FFE25D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C392A1BCD9D2400FFE25D /* Color.swift */; settings = {ASSET_TAGS = (); }; };
+		B38B33791BD4314B00F9C8C8 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38B33781BD4314B00F9C8C8 /* NavigationController.swift */; settings = {ASSET_TAGS = (); }; };
+		B38B337E1BD95FAF00F9C8C8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38B337D1BD95FAF00F9C8C8 /* Settings.swift */; settings = {ASSET_TAGS = (); }; };
+		B38B33801BD96E2B00F9C8C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B38B337F1BD96E2B00F9C8C8 /* Localizable.strings */; settings = {ASSET_TAGS = (); }; };
+		B38B33821BD9787D00F9C8C8 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B38B33811BD9787D00F9C8C8 /* AudioToolbox.framework */; };
+		B38B33871BD98E7F00F9C8C8 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B38B33851BD98E7F00F9C8C8 /* Fabric.framework */; settings = {ASSET_TAGS = (); }; };
+		B38B33881BD98E7F00F9C8C8 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B38B33861BD98E7F00F9C8C8 /* Crashlytics.framework */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +56,14 @@
 		B37C39181BCD96DC00FFE25D /* radioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = radioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B37C391C1BCD96DC00FFE25D /* radioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = radioUITests.swift; sourceTree = "<group>"; };
 		B37C391E1BCD96DC00FFE25D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B37C392A1BCD9D2400FFE25D /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		B38B33781BD4314B00F9C8C8 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		B38B337D1BD95FAF00F9C8C8 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		B38B337F1BD96E2B00F9C8C8 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		B38B33811BD9787D00F9C8C8 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B38B33831BD9787D00F9C8C8 /* radio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = radio.entitlements; sourceTree = "<group>"; };
+		B38B33851BD98E7F00F9C8C8 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		B38B33861BD98E7F00F9C8C8 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +71,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B38B33821BD9787D00F9C8C8 /* AudioToolbox.framework in Frameworks */,
+				B38B33881BD98E7F00F9C8C8 /* Crashlytics.framework in Frameworks */,
+				B38B33871BD98E7F00F9C8C8 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +97,7 @@
 		B37C38F01BCD96DB00FFE25D = {
 			isa = PBXGroup;
 			children = (
+				B38B33811BD9787D00F9C8C8 /* AudioToolbox.framework */,
 				B37C38FB1BCD96DB00FFE25D /* radio */,
 				B37C39101BCD96DC00FFE25D /* radioTests */,
 				B37C391B1BCD96DC00FFE25D /* radioUITests */,
@@ -97,12 +118,19 @@
 		B37C38FB1BCD96DB00FFE25D /* radio */ = {
 			isa = PBXGroup;
 			children = (
+				B38B33831BD9787D00F9C8C8 /* radio.entitlements */,
 				B37C38FC1BCD96DB00FFE25D /* AppDelegate.swift */,
 				B37C38FE1BCD96DB00FFE25D /* ViewController.swift */,
+				B38B337D1BD95FAF00F9C8C8 /* Settings.swift */,
+				B38B33781BD4314B00F9C8C8 /* NavigationController.swift */,
+				B37C392A1BCD9D2400FFE25D /* Color.swift */,
 				B37C39001BCD96DB00FFE25D /* Main.storyboard */,
 				B37C39031BCD96DB00FFE25D /* Assets.xcassets */,
 				B37C39051BCD96DB00FFE25D /* LaunchScreen.storyboard */,
 				B37C39081BCD96DB00FFE25D /* Info.plist */,
+				B38B337F1BD96E2B00F9C8C8 /* Localizable.strings */,
+				B38B33851BD98E7F00F9C8C8 /* Fabric.framework */,
+				B38B33861BD98E7F00F9C8C8 /* Crashlytics.framework */,
 			);
 			path = radio;
 			sourceTree = "<group>";
@@ -135,6 +163,7 @@
 				B37C38F51BCD96DB00FFE25D /* Sources */,
 				B37C38F61BCD96DB00FFE25D /* Frameworks */,
 				B37C38F71BCD96DB00FFE25D /* Resources */,
+				B38B33841BD98E7000F9C8C8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -192,6 +221,12 @@
 				TargetAttributes = {
 					B37C38F81BCD96DB00FFE25D = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 2A87Z3N5D5;
+						SystemCapabilities = {
+							com.apple.InterAppAudio = {
+								enabled = 1;
+							};
+						};
 					};
 					B37C390C1BCD96DC00FFE25D = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -229,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B37C39071BCD96DB00FFE25D /* LaunchScreen.storyboard in Resources */,
+				B38B33801BD96E2B00F9C8C8 /* Localizable.strings in Resources */,
 				B37C39041BCD96DB00FFE25D /* Assets.xcassets in Resources */,
 				B37C39021BCD96DB00FFE25D /* Main.storyboard in Resources */,
 			);
@@ -250,13 +286,32 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B38B33841BD98E7000F9C8C8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run f648d31d4ffa04ff00dc5b57a908c34440e85c0f 954e166b79d4177b12e398482aa0fa831e7d154c1e01495e450f87b5da9626b1";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B37C38F51BCD96DB00FFE25D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				B37C38FF1BCD96DB00FFE25D /* ViewController.swift in Sources */,
+				B38B33791BD4314B00F9C8C8 /* NavigationController.swift in Sources */,
+				B37C392B1BCD9D2400FFE25D /* Color.swift in Sources */,
 				B37C38FD1BCD96DB00FFE25D /* AppDelegate.swift in Sources */,
+				B38B337E1BD95FAF00F9C8C8 /* Settings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B37C39121BCD96DC00FFE25D /* radioTests.swift in Sources */,
+				B37C392C1BCD9D2400FFE25D /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B37C391D1BCD96DC00FFE25D /* radioUITests.swift in Sources */,
+				B37C392D1BCD9D2400FFE25D /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,10 +455,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = radio/radio.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/radio",
+				);
 				INFOPLIST_FILE = radio/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alekoleg.radio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "b8b392b3-bd65-4620-bbf7-bc415c64f786";
 			};
 			name = Debug;
 		};
@@ -409,10 +475,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = radio/radio.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/radio",
+				);
 				INFOPLIST_FILE = radio/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alekoleg.radio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "b8b392b3-bd65-4620-bbf7-bc415c64f786";
 			};
 			name = Release;
 		};
@@ -483,6 +558,7 @@
 				B37C39231BCD96DC00FFE25D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B37C39241BCD96DC00FFE25D /* Build configuration list for PBXNativeTarget "radioTests" */ = {
 			isa = XCConfigurationList;
@@ -491,6 +567,7 @@
 				B37C39261BCD96DC00FFE25D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B37C39271BCD96DC00FFE25D /* Build configuration list for PBXNativeTarget "radioUITests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +576,7 @@
 				B37C39291BCD96DC00FFE25D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

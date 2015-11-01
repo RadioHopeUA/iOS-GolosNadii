@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zSx-UL-5a8">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="1uU-TC-g9v">
+            <objects>
+                <navigationController id="zSx-UL-5a8" customClass="NavigationController" customModule="radio" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JZw-tB-xvl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="qe7-J5-RWF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mro-tw-xgB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-36" y="-129"/>
+        </scene>
+        <!--Radio-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="radio" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +33,152 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Hoc-mx-6zA">
+                                <rect key="frame" x="187" y="285" width="226" height="31"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="6Iw-4b-axg"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="114" id="tcL-LL-Nyx"/>
+                                    <constraint firstAttribute="width" constant="222" id="zTd-gg-757"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="tcL-LL-Nyx"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="updateVolume:" destination="BYZ-38-t0r" eventType="valueChanged" id="ajj-ho-bcp"/>
+                                </connections>
+                            </slider>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YdX-pT-2aa">
+                                <rect key="frame" x="0.0" y="64" width="600" height="221"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rZL-Lg-0Xk">
+                                        <rect key="frame" x="253" y="62.5" width="95" height="95"/>
+                                        <animations/>
+                                        <state key="normal" image="play"/>
+                                        <state key="selected" image="pause"/>
+                                        <connections>
+                                            <action selector="playOrPause:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rSf-aa-J8o"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="rZL-Lg-0Xk" firstAttribute="centerY" secondItem="YdX-pT-2aa" secondAttribute="centerY" id="OLz-7j-VnF"/>
+                                    <constraint firstItem="rZL-Lg-0Xk" firstAttribute="centerX" secondItem="YdX-pT-2aa" secondAttribute="centerX" id="fmi-tV-LqS"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ozd-vn-Pkj">
+                                <rect key="frame" x="140" y="278" width="44" height="44"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="AyQ-x8-bVY"/>
+                                    <constraint firstAttribute="width" constant="44" id="LeZ-xP-1NW"/>
+                                </constraints>
+                                <state key="normal" image="volumeDown"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ifD-AD-y35">
+                                <rect key="frame" x="416" y="278" width="44" height="44"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="NPx-Ev-gte"/>
+                                    <constraint firstAttribute="height" constant="44" id="X6G-Hy-OcF"/>
+                                    <constraint firstAttribute="width" constant="44" id="aA0-Bh-877"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="ltT-ku-Rcf"/>
+                                </constraints>
+                                <state key="normal" image="volumeUp"/>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DJA-1o-aRx">
+                                <rect key="frame" x="210" y="366" width="180" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pXD-OJ-QLB">
+                                        <rect key="frame" x="120" y="0.0" width="60" height="60"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="DUC-eI-o7Q"/>
+                                            <constraint firstAttribute="height" constant="60" id="zPW-L8-uOO"/>
+                                        </constraints>
+                                        <state key="normal" image="email"/>
+                                        <connections>
+                                            <action selector="sendMail" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zbd-Xe-VaQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrd-Dg-OY5">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="9Gr-sa-Mdi"/>
+                                            <constraint firstAttribute="width" constant="60" id="eil-VL-7Gu"/>
+                                        </constraints>
+                                        <state key="normal" image="facebook"/>
+                                        <connections>
+                                            <action selector="openFacebook" destination="BYZ-38-t0r" eventType="touchUpInside" id="uQ7-rm-6qj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="pXD-OJ-QLB" firstAttribute="top" secondItem="DJA-1o-aRx" secondAttribute="top" id="Odn-8A-Up7"/>
+                                    <constraint firstAttribute="bottom" secondItem="yrd-Dg-OY5" secondAttribute="bottom" id="Rhh-ie-qHf"/>
+                                    <constraint firstItem="yrd-Dg-OY5" firstAttribute="leading" secondItem="DJA-1o-aRx" secondAttribute="leading" id="Rru-XT-ZdK"/>
+                                    <constraint firstItem="yrd-Dg-OY5" firstAttribute="top" secondItem="DJA-1o-aRx" secondAttribute="top" id="UYr-f4-ecN"/>
+                                    <constraint firstItem="pXD-OJ-QLB" firstAttribute="leading" secondItem="yrd-Dg-OY5" secondAttribute="trailing" constant="60" id="lAv-vc-4gU"/>
+                                    <constraint firstAttribute="bottom" secondItem="pXD-OJ-QLB" secondAttribute="bottom" id="m7V-6g-y7H"/>
+                                    <constraint firstAttribute="trailing" secondItem="pXD-OJ-QLB" secondAttribute="trailing" id="wj4-dz-mP7"/>
+                                    <constraint firstItem="yrd-Dg-OY5" firstAttribute="centerX" secondItem="DJA-1o-aRx" secondAttribute="centerX" id="yu2-Jk-idp"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="yu2-Jk-idp"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" red="0.13333333333333333" green="0.15294117647058825" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="YdX-pT-2aa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4JS-jl-Dpc"/>
+                            <constraint firstItem="ifD-AD-y35" firstAttribute="leading" secondItem="Hoc-mx-6zA" secondAttribute="trailing" constant="5" id="Fsx-Tc-Rz4"/>
+                            <constraint firstItem="ifD-AD-y35" firstAttribute="centerY" secondItem="Hoc-mx-6zA" secondAttribute="centerY" id="N3n-od-bDB"/>
+                            <constraint firstItem="DJA-1o-aRx" firstAttribute="top" secondItem="ifD-AD-y35" secondAttribute="bottom" constant="44" id="UWM-z2-n0C"/>
+                            <constraint firstItem="Hoc-mx-6zA" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="WmM-gq-HZY"/>
+                            <constraint firstItem="Hoc-mx-6zA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dtB-7X-oZa"/>
+                            <constraint firstAttribute="trailing" secondItem="YdX-pT-2aa" secondAttribute="trailing" id="fjK-MS-c7z"/>
+                            <constraint firstItem="YdX-pT-2aa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="fkp-mm-oZI"/>
+                            <constraint firstItem="DJA-1o-aRx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mnE-UE-Gm0"/>
+                            <constraint firstItem="Hoc-mx-6zA" firstAttribute="top" secondItem="YdX-pT-2aa" secondAttribute="bottom" id="mw6-x4-MTN"/>
+                            <constraint firstItem="Hoc-mx-6zA" firstAttribute="leading" secondItem="Ozd-vn-Pkj" secondAttribute="trailing" constant="5" id="q3v-95-gmB"/>
+                            <constraint firstItem="Hoc-mx-6zA" firstAttribute="centerY" secondItem="Ozd-vn-Pkj" secondAttribute="centerY" id="qDZ-dH-Bew"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Radio" id="Lnd-Et-r51">
+                        <barButtonItem key="leftBarButtonItem" image="site" id="C9O-Va-q4E">
+                            <connections>
+                                <action selector="openSite" destination="BYZ-38-t0r" id="S6a-64-8fI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="playButton" destination="rZL-Lg-0Xk" id="xWe-M1-J8I"/>
+                        <outlet property="slider" destination="Hoc-mx-6zA" id="zeD-iP-rSZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="707" y="-129"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="email" width="42" height="35"/>
+        <image name="facebook" width="42" height="42"/>
+        <image name="pause" width="95" height="95"/>
+        <image name="play" width="95" height="95"/>
+        <image name="site" width="26" height="24"/>
+        <image name="volumeDown" width="12" height="17"/>
+        <image name="volumeUp" width="24" height="19"/>
+    </resources>
 </document>

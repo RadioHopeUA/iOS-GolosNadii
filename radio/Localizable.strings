@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  radio
+
+  Created by Oleg Alekseenko on 22/10/15.
+  Copyright © 2015 Oleg Alekseenko. All rights reserved.
+*/
+
+"alert.title.error" = "Error";
+"alert.button.cancel" = "Cancel";
+"alert.button.retry" = "Retry";
+"alert.message.error" = "Error occured while streaming";
