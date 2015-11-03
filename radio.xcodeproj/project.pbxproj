@@ -14,15 +14,15 @@
 		B37C39071BCD96DB00FFE25D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B37C39051BCD96DB00FFE25D /* LaunchScreen.storyboard */; };
 		B37C39121BCD96DC00FFE25D /* radioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C39111BCD96DC00FFE25D /* radioTests.swift */; };
 		B37C391D1BCD96DC00FFE25D /* radioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C391C1BCD96DC00FFE25D /* radioUITests.swift */; };
-		B37C392B1BCD9D2400FFE25D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C392A1BCD9D2400FFE25D /* Color.swift */; settings = {ASSET_TAGS = (); }; };
-		B37C392C1BCD9D2400FFE25D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C392A1BCD9D2400FFE25D /* Color.swift */; settings = {ASSET_TAGS = (); }; };
-		B37C392D1BCD9D2400FFE25D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C392A1BCD9D2400FFE25D /* Color.swift */; settings = {ASSET_TAGS = (); }; };
-		B38B33791BD4314B00F9C8C8 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38B33781BD4314B00F9C8C8 /* NavigationController.swift */; settings = {ASSET_TAGS = (); }; };
-		B38B337E1BD95FAF00F9C8C8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38B337D1BD95FAF00F9C8C8 /* Settings.swift */; settings = {ASSET_TAGS = (); }; };
-		B38B33801BD96E2B00F9C8C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B38B337F1BD96E2B00F9C8C8 /* Localizable.strings */; settings = {ASSET_TAGS = (); }; };
+		B37C392B1BCD9D2400FFE25D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C392A1BCD9D2400FFE25D /* Color.swift */; };
+		B37C392C1BCD9D2400FFE25D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C392A1BCD9D2400FFE25D /* Color.swift */; };
+		B37C392D1BCD9D2400FFE25D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C392A1BCD9D2400FFE25D /* Color.swift */; };
+		B38B33791BD4314B00F9C8C8 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38B33781BD4314B00F9C8C8 /* NavigationController.swift */; };
+		B38B337E1BD95FAF00F9C8C8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38B337D1BD95FAF00F9C8C8 /* Settings.swift */; };
+		B38B33801BD96E2B00F9C8C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B38B337F1BD96E2B00F9C8C8 /* Localizable.strings */; };
 		B38B33821BD9787D00F9C8C8 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B38B33811BD9787D00F9C8C8 /* AudioToolbox.framework */; };
-		B38B33871BD98E7F00F9C8C8 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B38B33851BD98E7F00F9C8C8 /* Fabric.framework */; settings = {ASSET_TAGS = (); }; };
-		B38B33881BD98E7F00F9C8C8 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B38B33861BD98E7F00F9C8C8 /* Crashlytics.framework */; settings = {ASSET_TAGS = (); }; };
+		B38B33871BD98E7F00F9C8C8 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B38B33851BD98E7F00F9C8C8 /* Fabric.framework */; };
+		B38B33881BD98E7F00F9C8C8 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B38B33861BD98E7F00F9C8C8 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -465,7 +465,7 @@
 				INFOPLIST_FILE = radio/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alekoleg.radio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alekoleg.radio.hope.ua;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "b8b392b3-bd65-4620-bbf7-bc415c64f786";
 			};
@@ -485,7 +485,7 @@
 				INFOPLIST_FILE = radio/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alekoleg.radio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alekoleg.radio.hope.ua;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "b8b392b3-bd65-4620-bbf7-bc415c64f786";
 			};

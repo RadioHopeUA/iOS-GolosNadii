@@ -18,7 +18,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 	@IBOutlet var playButton: UIButton?
 
 	var player: AVPlayer?
-	let settings: Settings = Suahili()
+	let settings: Settings = HopeUA()
 
 	var playing:Bool = false
 	{
@@ -37,9 +37,56 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 		setupPlayer()
 
 		slider?.value = 1.0;
-		try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+		try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
 
-		var timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("updateTime"), userInfo: nil, repeats: true)
+		NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("updateTime"), userInfo: nil, repeats: true)
+
+
+		let shareItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Reply, target: self, action: Selector("share:"));
+		self.navigationItem.rightBarButtonItem = shareItem;
+	}
+
+	func share(sender:UIBarButtonItem?)
+	{
+		let alertVC = UIAlertController(title: "Поделиться", message: nil, preferredStyle: .ActionSheet);
+
+		let fbAction = UIAlertAction(title: "Facebook", style: .Default) { (action) -> Void in
+			self.openFacebook()
+		};
+
+		let vkAction = UIAlertAction(title: "Вконтакте", style: .Default) { (action) -> Void in
+			self.openVK()
+		};
+
+		let twAction = UIAlertAction(title: "Twitter", style: .Default) { (action) -> Void in
+			self.openTwitter()
+		};
+
+		let pdAction = UIAlertAction(title: "Podster", style: .Default) { (action) -> Void in
+			self.openPodster()
+		};
+
+		let emAction = UIAlertAction(title: "Обратная связь", style: .Default) { (action) -> Void in
+			self.sendMail()
+		};
+
+		let cancelAction = UIAlertAction(title: "Отмена", style: .Cancel) { (action) -> Void in
+
+		};
+
+		alertVC.addAction(fbAction)
+		alertVC.addAction(vkAction)
+		alertVC.addAction(twAction)
+		alertVC.addAction(pdAction)
+		alertVC.addAction(emAction)
+		alertVC.addAction(cancelAction)
+
+		if (alertVC.popoverPresentationController != nil)
+		{
+			alertVC.popoverPresentationController?.barButtonItem = sender
+		}
+
+		self.presentViewController(alertVC, animated: true, completion: nil)
 
 	}
 
@@ -103,13 +150,32 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 		openURL(url)
 	}
 
+	@IBAction func openPodster()
+	{
+		let url = NSURL(string: settings.podStepLink())
+		openURL(url)
+	}
+
+	@IBAction func openTwitter()
+	{
+		let url = NSURL(string: settings.twitterLink())
+		openURL(url)
+	}
+
+	@IBAction func openVK()
+	{
+		let url = NSURL(string: settings.vkLink())
+		openURL(url)
+	}
+
+
 	@IBAction func sendMail()
 	{
 		if MFMailComposeViewController.canSendMail()
 		{
 			let mailVC = MFMailComposeViewController()
 			mailVC.setSubject("Radio app")
-			mailVC.setToRecipients(["gmsambwa@gmail.com"])
+			mailVC.setToRecipients(["v.dubinskij@hope.ua"])
 			mailVC.mailComposeDelegate = self
 			self.presentViewController(mailVC, animated: true, completion: nil);
 		}
