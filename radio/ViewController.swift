@@ -10,12 +10,15 @@ import UIKit
 import AVFoundation
 import SafariServices
 import MessageUI
+import AFNetworking
+import MediaPlayer
 
 class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
 	// MARK: - Properties -
-	@IBOutlet var slider: UISlider?
 	@IBOutlet var playButton: UIButton?
+	@IBOutlet var playTextLabel: UILabel?
+	@IBOutlet var volumeSlider: MPVolumeView?
 
 	var player: AVPlayer?
 	let settings: Settings = HopeUA()
@@ -34,16 +37,16 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 		// Do any additional setup after loading the view, typically from a nib.
 
 		setupUI()
-		setupPlayer()
+		setupReachabilityObserving()
 
-		slider?.value = 1.0;
 		try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-
-		NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("updateTime"), userInfo: nil, repeats: true)
 
 
 		let shareItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Reply, target: self, action: Selector("share:"));
 		self.navigationItem.rightBarButtonItem = shareItem;
+
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("playerDidEnded"), name: AVPlayerItemDidPlayToEndTimeNotification, object: player)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("playerDidFailed"), name: AVPlayerItemFailedToPlayToEndTimeNotification, object: player)
 	}
 
 	func share(sender:UIBarButtonItem?)
@@ -108,35 +111,32 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
 	// MARK: - Setup -
 
-	func setupPlayer()
-	{
-		let url = NSURL(string: settings.streamLink())
-		player = AVPlayer(URL: url!)
-		player?.volume = slider!.value
-
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("playerDidEnded"), name: AVPlayerItemDidPlayToEndTimeNotification, object: player)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("playerDidFailed"), name: AVPlayerItemFailedToPlayToEndTimeNotification, object: player)
-	}
 
 	func setupUI()
 	{
-		slider?.tintColor = UIColor.r_lightColor();
-		slider?.setThumbImage(UIImage(named: "thumb"), forState: .Normal);
+		volumeSlider?.tintColor = UIColor.r_lightColor();
+		volumeSlider?.setVolumeThumbImage(UIImage(named: "thumb"), forState: .Normal);
 	}
 
-	// MARK: - Actions -
-
-	func updateTime(){
-
-		if (player != nil)
-		{
-			let status = player?.currentItem?.asset.statusOfValueForKey("playable", error: nil);
-			if status != AVKeyValueStatus.Loaded && player?.currentItem?.error != nil
-			{
-				showAlert()
+	func setupReachabilityObserving()
+	{
+		AFNetworkReachabilityManager.sharedManager().startMonitoring()
+		AFNetworkReachabilityManager.sharedManager().setReachabilityStatusChangeBlock { (status:AFNetworkReachabilityStatus) -> Void in
+			switch status {
+			case .NotReachable:
+					self.stopPlaying()
+					self.showError()
+			case .ReachableViaWiFi, .ReachableViaWWAN:
+				if self.playing {
+					self.startPlaying()
+				}
+			default:
+				 break
 			}
 		}
 	}
+
+	// MARK: - Actions -
 
 	@IBAction func openSite()
 	{
@@ -175,7 +175,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 		{
 			let mailVC = MFMailComposeViewController()
 			mailVC.setSubject("Radio app")
-			mailVC.setToRecipients(["v.dubinskij@hope.ua"])
+			mailVC.setToRecipients(["support@hope.ua"])
 			mailVC.mailComposeDelegate = self
 			self.presentViewController(mailVC, animated: true, completion: nil);
 		}
@@ -187,29 +187,21 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 		{
 			if UIApplication.sharedApplication().canOpenURL(url!)
 			{
-				if #available(iOS 9.0, *) {
-				    let safari = SFSafariViewController(URL: url!)
-					self.presentViewController(safari, animated: true, completion: nil);
-				} else {
-					UIApplication.sharedApplication().openURL(url!);
-				};
+				UIApplication.sharedApplication().openURL(url!);
 			}
 		}
 	}
 
 	@IBAction func playOrPause(sender:UIButton) -> ()
 	{
-
 		if(playing)
 		{
-			player?.pause()
+			stopPlaying()
 		}
 		else
 		{
-			player?.play()
+			startPlaying()
 		}
-
-		playing = !playing
 	}
 
 	@IBAction func updateVolume(sender:UISlider)
@@ -219,27 +211,83 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
 	func playerDidEnded(not:NSNotification)
 	{
-		playing = false
+		stopPlaying()
 	}
 
 	func playerDidFailed(not:NSNotification)
 	{
-		playing = false
-
-		showAlert();
+		stopPlaying()
+		showError();
 	}
 
+	func startPlaying()
+	{
+		if (player != nil)
+		{
+			player?.pause();
+			player = nil;
+		}
 
-	func showAlert()
+		if(AFNetworkReachabilityManager.sharedManager().reachable)
+		{
+			let url = NSURL(string: settings.streamLink())
+			player = AVPlayer(URL: url!)
+			player?.play()
+			playing = true
+			beginRecurciveUpdateTitleUpdate()
+		}
+		else
+		{
+			showError()
+		}
+	}
+
+	func stopPlaying()
+	{
+		if (player != nil)
+		{
+			player?.pause();
+			player = nil;
+		}
+		playing = false;
+	}
+
+	func beginRecurciveUpdateTitleUpdate()
+	{
+		let manager = AFURLSessionManager();
+		let responseSerializer = AFHTTPResponseSerializer()
+		var types = responseSerializer.acceptableContentTypes
+		types?.insert("text/plain")
+		responseSerializer.acceptableContentTypes = types
+		manager.responseSerializer = responseSerializer
+		let url = NSURL(string: "http://stream.hope.ua:7777/currentsong?sid=11")
+		let request = NSURLRequest(URL: url!);
+		let task = manager.dataTaskWithRequest(request) { (response, data, error) -> Void in
+			if ((data as? NSData) != nil)
+			{
+				let text = NSString(data: data as! NSData, encoding: NSUTF8StringEncoding)!
+				self.playTextLabel?.text = text as String
+			}
+
+			let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Double(NSEC_PER_SEC)))
+			dispatch_after(delayTime, dispatch_get_main_queue()) {
+				if self.playing
+				{
+					self.beginRecurciveUpdateTitleUpdate()
+				}
+			}
+		}
+		task.resume()
+	}
+
+	func showError()
 	{
 		let alertController = UIAlertController(title: NSLocalizedString("alert.title.error", comment: ""), message: NSLocalizedString("alert.message.error", comment: ""), preferredStyle: .Alert)
 		let tryAction = UIAlertAction(title: NSLocalizedString("alert.button.retry", comment: ""), style: UIAlertActionStyle.Default) { (action) -> Void in
-			self.setupPlayer()
-			self.player?.play()
-			self.playing = true
+			 self.stopPlaying()
+
 		}
 		let cancelAction = UIAlertAction(title: NSLocalizedString("alert.button.cancel", comment: ""), style: UIAlertActionStyle.Cancel) { (action) -> Void in
-			self.setupPlayer()
 		}
 		alertController.addAction(tryAction)
 		alertController.addAction(cancelAction)
@@ -251,18 +299,14 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 		{
 			switch event!.subtype {
 			case UIEventSubtype.RemoteControlPlay:
-				playing = true
-				player?.play()
+				startPlaying()
 
 			case UIEventSubtype.RemoteControlPause:
-				playing = false
-				player?.pause()
-
+				stopPlaying()
 			default: break
 			}
 		}
 	}
-
 
 	// MARK: - MFMailComposeDelegate -
 
