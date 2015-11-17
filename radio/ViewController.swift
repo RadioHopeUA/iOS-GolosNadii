@@ -45,8 +45,16 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 		let shareItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Reply, target: self, action: Selector("share:"));
 		self.navigationItem.rightBarButtonItem = shareItem;
 
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("playerDidEnded"), name: AVPlayerItemDidPlayToEndTimeNotification, object: player)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("playerDidFailed"), name: AVPlayerItemFailedToPlayToEndTimeNotification, object: player)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("playerDidEnded:"), name: AVPlayerItemDidPlayToEndTimeNotification, object: player)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("playerDidFailed:"), name: AVPlayerItemFailedToPlayToEndTimeNotification, object: player)
+
+		self.view.layoutIfNeeded()
+	}
+
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+
+		self.volumeSlider?.layer.removeAllAnimations();
 	}
 
 	func share(sender:UIBarButtonItem?)
@@ -116,6 +124,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 	{
 		volumeSlider?.tintColor = UIColor.r_lightColor();
 		volumeSlider?.setVolumeThumbImage(UIImage(named: "thumb"), forState: .Normal);
+		volumeSlider?.showsRouteButton = false;
 	}
 
 	func setupReachabilityObserving()
@@ -266,7 +275,11 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 			if ((data as? NSData) != nil)
 			{
 				let text = NSString(data: data as! NSData, encoding: NSUTF8StringEncoding)!
-				self.playTextLabel?.text = text as String
+				let components = text.componentsSeparatedByString("-")
+				if (components.count > 1)
+				{
+					self.updateTextLabel(components[0], detail: components[1]);
+				}
 			}
 
 			let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Double(NSEC_PER_SEC)))
@@ -278,6 +291,38 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 			}
 		}
 		task.resume()
+	}
+
+	func updateTextLabel(title:String?, var detail:String?)
+	{
+		let string = NSMutableAttributedString();
+		if (title != nil)
+		{
+			let atributes = [
+				NSFontAttributeName : UIFont(name: "HelveticaNeue-Medium", size: 17.0)!,
+				NSForegroundColorAttributeName : UIColor.r_lightColor()
+			]
+
+			let titleString = NSAttributedString(string: title!, attributes: atributes );
+			string.appendAttributedString(titleString)
+		}
+
+		if (detail != nil)
+		{
+			if (title != nil)
+			{
+				detail = "\n\(detail)"
+			}
+			let atributes = [
+				NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 17.0)!,
+				NSForegroundColorAttributeName : UIColor.r_lightColor()
+			]
+
+			let detailString = NSAttributedString(string: detail!, attributes: atributes)
+			string.appendAttributedString(detailString)
+		}
+
+		self.playTextLabel?.attributedText = string
 	}
 
 	func showError()

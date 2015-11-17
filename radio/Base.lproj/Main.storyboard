@@ -39,7 +39,7 @@
                                 <animations/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ozd-vn-Pkj">
-                                <rect key="frame" x="145" y="278" width="44" height="44"/>
+                                <rect key="frame" x="166" y="278" width="44" height="44"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="AyQ-x8-bVY"/>
@@ -48,7 +48,7 @@
                                 <state key="normal" image="volumeDown"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ifD-AD-y35">
-                                <rect key="frame" x="411" y="278" width="44" height="44"/>
+                                <rect key="frame" x="390" y="278" width="44" height="44"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="NPx-Ev-gte"/>
@@ -100,11 +100,11 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kns-k8-KiV">
-                                        <rect key="frame" x="250" y="234" width="100" height="44"/>
+                                        <rect key="frame" x="250" y="248" width="100" height="30"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="xj3-Ou-Aam"/>
-                                            <constraint firstAttribute="height" constant="44" id="xvZ-gh-Gdm"/>
+                                            <constraint firstAttribute="height" constant="30" id="xvZ-gh-Gdm"/>
                                         </constraints>
                                         <state key="normal">
                                             <attributedString key="attributedTitle">
@@ -130,16 +130,47 @@
                                             <action selector="openSite" destination="BYZ-38-t0r" eventType="touchUpInside" id="7dW-qY-WaK"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6j-zy-N6O">
+                                        <rect key="frame" x="238" y="169.5" width="124.5" height="78.5"/>
+                                        <animations/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Голос Надії">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.39215686274509803" green="0.41960784313725491" blue="0.41568627450980389" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="15" name="HelveticaNeue-Medium"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="Радіо, яке даруе надію">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.39215686274509803" green="0.41960784313725491" blue="0.41568627450980389" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="13" name="HelveticaNeue-UltraLight"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="rcf-yk-Xcf" firstAttribute="leading" secondItem="RFG-Ij-EKB" secondAttribute="leading" id="Koc-X7-k8n"/>
                                     <constraint firstAttribute="trailing" secondItem="rcf-yk-Xcf" secondAttribute="trailing" id="MYV-kR-npK"/>
+                                    <constraint firstItem="W6j-zy-N6O" firstAttribute="top" secondItem="rcf-yk-Xcf" secondAttribute="bottom" id="O2f-zu-Weo"/>
                                     <constraint firstItem="rcf-yk-Xcf" firstAttribute="centerY" secondItem="RFG-Ij-EKB" secondAttribute="centerY" id="SvU-wb-qab"/>
+                                    <constraint firstItem="Kns-k8-KiV" firstAttribute="top" secondItem="W6j-zy-N6O" secondAttribute="bottom" id="XWH-Eu-zO5"/>
                                     <constraint firstAttribute="bottom" secondItem="Kns-k8-KiV" secondAttribute="bottom" id="ai3-X2-CzI"/>
                                     <constraint firstItem="rcf-yk-Xcf" firstAttribute="centerX" secondItem="RFG-Ij-EKB" secondAttribute="centerX" id="epx-0o-xEj"/>
                                     <constraint firstItem="rcf-yk-Xcf" firstAttribute="centerX" secondItem="RFG-Ij-EKB" secondAttribute="centerX" id="jiK-RK-cCc"/>
+                                    <constraint firstItem="W6j-zy-N6O" firstAttribute="centerX" secondItem="RFG-Ij-EKB" secondAttribute="centerX" id="rIA-jL-HeH"/>
                                     <constraint firstItem="Kns-k8-KiV" firstAttribute="centerX" secondItem="RFG-Ij-EKB" secondAttribute="centerX" id="vYs-Bc-DIq"/>
                                 </constraints>
                             </view>
@@ -155,8 +186,8 @@
                                             <action selector="playOrPause:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rSf-aa-J8o"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="310" translatesAutoresizingMaskIntoConstraints="NO" id="BvM-YY-Io7">
-                                        <rect key="frame" x="301" y="62" width="0.0" height="0.0"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="310" translatesAutoresizingMaskIntoConstraints="NO" id="BvM-YY-Io7">
+                                        <rect key="frame" x="300" y="63" width="0.0" height="0.0"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <color key="textColor" red="0.67843137254901964" green="0.72549019607843135" blue="0.71764705882352942" alpha="1" colorSpace="calibratedRGB"/>
@@ -172,12 +203,12 @@
                                     <constraint firstItem="BvM-YY-Io7" firstAttribute="centerY" secondItem="YdX-pT-2aa" secondAttribute="centerY" constant="-50" id="zqn-gG-2EO"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Myb-VT-PkG" customClass="MPVolumeView">
-                                <rect key="frame" x="189" y="290" width="222" height="20"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Myb-VT-PkG" customClass="VolumeSlider" customModule="radio" customModuleProvider="target">
+                                <rect key="frame" x="215" y="290" width="170" height="20"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="222" id="B5m-JA-GJp"/>
+                                    <constraint firstAttribute="width" constant="170" id="B5m-JA-GJp"/>
                                     <constraint firstAttribute="height" constant="20" id="lFr-5o-JO0"/>
                                 </constraints>
                             </view>
@@ -197,10 +228,10 @@
                             <constraint firstItem="jk6-Fd-TN1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="N7f-FV-Cd3"/>
                             <constraint firstItem="Myb-VT-PkG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Pq5-b1-47M"/>
                             <constraint firstAttribute="trailing" secondItem="RFG-Ij-EKB" secondAttribute="trailing" id="RjR-YO-NDw"/>
-                            <constraint firstItem="ifD-AD-y35" firstAttribute="leading" secondItem="Myb-VT-PkG" secondAttribute="trailing" id="aE4-h8-eOw"/>
+                            <constraint firstItem="ifD-AD-y35" firstAttribute="leading" secondItem="Myb-VT-PkG" secondAttribute="trailing" constant="5" id="aE4-h8-eOw"/>
                             <constraint firstItem="RFG-Ij-EKB" firstAttribute="top" secondItem="ifD-AD-y35" secondAttribute="bottom" id="aEq-WE-U5n"/>
                             <constraint firstItem="jk6-Fd-TN1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="d5t-ft-KgK"/>
-                            <constraint firstItem="Myb-VT-PkG" firstAttribute="leading" secondItem="Ozd-vn-Pkj" secondAttribute="trailing" id="dnF-rx-fkW"/>
+                            <constraint firstItem="Myb-VT-PkG" firstAttribute="leading" secondItem="Ozd-vn-Pkj" secondAttribute="trailing" constant="5" id="dnF-rx-fkW"/>
                             <constraint firstAttribute="trailing" secondItem="YdX-pT-2aa" secondAttribute="trailing" id="fjK-MS-c7z"/>
                             <constraint firstItem="YdX-pT-2aa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="fkp-mm-oZI"/>
                             <constraint firstItem="ifD-AD-y35" firstAttribute="centerY" secondItem="Ozd-vn-Pkj" secondAttribute="centerY" id="mlL-Jg-OPV"/>
