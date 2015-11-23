@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>6</string>
+	<string>8</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -46,6 +46,7 @@
 		<string>tel</string>
 		<string>fb</string>
 		<string>tw</string>
+		<string>vk</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

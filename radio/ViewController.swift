@@ -133,8 +133,20 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 		AFNetworkReachabilityManager.sharedManager().setReachabilityStatusChangeBlock { (status:AFNetworkReachabilityStatus) -> Void in
 			switch status {
 			case .NotReachable:
-					self.stopPlaying()
-					self.showError()
+				let wasPlaying = self.playing;
+				self.stopPlaying()
+				let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Double(NSEC_PER_SEC)))
+				dispatch_after(delayTime, dispatch_get_main_queue()) {
+					if wasPlaying {
+						if AFNetworkReachabilityManager.sharedManager().reachable {
+							self.startPlaying()
+						}
+						else
+						{
+							self.showError()
+						}
+					}
+				}
 			case .ReachableViaWiFi, .ReachableViaWWAN:
 				if self.playing {
 					self.startPlaying()
@@ -173,8 +185,16 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
 	@IBAction func openVK()
 	{
-		let url = NSURL(string: settings.vkLink())
-		openURL(url)
+		let siteUrl = NSURL(string: settings.vkLink())
+		let appUrl = NSURL(string: settings.vkAppLink())
+		if (UIApplication.sharedApplication().canOpenURL(appUrl!))
+		{
+			UIApplication.sharedApplication().openURL(appUrl!)
+		}
+		else
+		{
+			UIApplication.sharedApplication().openURL(siteUrl!);
+		}
 	}
 
 
@@ -311,7 +331,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 		{
 			if (title != nil)
 			{
-				detail = "\n\(detail)"
+				detail = "\n\(detail!)"
 			}
 			let atributes = [
 				NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 17.0)!,
@@ -329,7 +349,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 	{
 		let alertController = UIAlertController(title: NSLocalizedString("alert.title.error", comment: ""), message: NSLocalizedString("alert.message.error", comment: ""), preferredStyle: .Alert)
 		let tryAction = UIAlertAction(title: NSLocalizedString("alert.button.retry", comment: ""), style: UIAlertActionStyle.Default) { (action) -> Void in
-			 self.stopPlaying()
+			 self.startPlaying()
 
 		}
 		let cancelAction = UIAlertAction(title: NSLocalizedString("alert.button.cancel", comment: ""), style: UIAlertActionStyle.Cancel) { (action) -> Void in
@@ -348,6 +368,14 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
 			case UIEventSubtype.RemoteControlPause:
 				stopPlaying()
+			case UIEventSubtype.RemoteControlTogglePlayPause:
+				if self.playing {
+					stopPlaying()
+				}
+				else
+				{
+					startPlaying()
+				}
 			default: break
 			}
 		}

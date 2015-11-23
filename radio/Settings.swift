@@ -16,6 +16,7 @@ protocol Settings
 	func facebookLink() -> String!
 	func twitterLink() -> String!
 	func vkLink() -> String!
+	func vkAppLink() -> String!
 	func podStepLink() -> String!
 }
 
@@ -40,6 +41,10 @@ class HopeUA: Settings {
 
 	func vkLink() -> String! {
 		return "https://vk.com/golosnadii"
+	}
+
+	func vkAppLink() -> String! {
+		return "vk://vk.com/golosnadii"
 	}
 
 	func podStepLink() -> String! {
