@@ -347,16 +347,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
 	func showError()
 	{
-		let alertController = UIAlertController(title: NSLocalizedString("alert.title.error", comment: ""), message: NSLocalizedString("alert.message.error", comment: ""), preferredStyle: .Alert)
-		let tryAction = UIAlertAction(title: NSLocalizedString("alert.button.retry", comment: ""), style: UIAlertActionStyle.Default) { (action) -> Void in
-			 self.startPlaying()
-
-		}
-		let cancelAction = UIAlertAction(title: NSLocalizedString("alert.button.cancel", comment: ""), style: UIAlertActionStyle.Cancel) { (action) -> Void in
-		}
-		alertController.addAction(tryAction)
-		alertController.addAction(cancelAction)
-		self.presentViewController(alertController, animated: true, completion: nil)
+		self.playTextLabel?.text = NSLocalizedString("alert.message.error", comment: "");
 	}
 
 	override func remoteControlReceivedWithEvent(event: UIEvent?) {
